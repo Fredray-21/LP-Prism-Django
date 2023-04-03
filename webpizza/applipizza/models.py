@@ -26,7 +26,7 @@ class Pizza(models.Model):
 
     # une methode de type  "toString" pour afficher l'objet
     def __str__(self):
-        return 'pizza' + self.nomPizza
+        return 'pizza ' + self.nomPizza + ' (prix = ' + str(self.prixPizza) + '€)'
 
 
 class Composition(models.Model):
