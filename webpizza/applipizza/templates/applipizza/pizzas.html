@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Les Pizzas</title>
+</head>
+<body>
+<header>
+    <nav>
+        <div><a href="/pizzas/">Les Pizzas</a></div>
+        <div><a href="/ingredients/">Les Ingredients</a></div>
+    </nav>
+</header>
+<main>
+    <h2>Voici nos {{pizzas|length}} pizzas </h2>
+    <ul>
+        {% for p in pizzas %}
+            <li>{{p}}</li>
+        {% endfor %}
+    </ul>
+    <footer>
+        Appli Pizza 2023
+    </footer>
+</main>
+</body>
+</html>
