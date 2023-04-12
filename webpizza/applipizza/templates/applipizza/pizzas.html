@@ -8,8 +8,8 @@ les pizzas
 {% block content %}
 <h2>Voici nos {{pizzas|length}} Pizzas </h2>
 <ul>
-    {% for p in pizzas %}
-    <li>{{p}}</li>
+    {% for p in pizzas %}   
+    <li>{{p}} | <a href="/pizzas/{{p.idPizza}}/">détails sur cette pizza </a></li>
     {% endfor %}
 </ul>
 {% endblock %}

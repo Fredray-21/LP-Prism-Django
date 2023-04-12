@@ -1,0 +1,15 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+Création d'un ingrédient
+{% endblock %}
+
+
+{% block content %}
+<h2>Création d'un Ingredient</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_div}}
+    <input type="submit" value="Envoyer">
+</form>
+{% endblock %}

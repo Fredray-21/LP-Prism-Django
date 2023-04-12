@@ -1,0 +1,102 @@
+:root{
+    --primary-red: #B61500;
+    --primary-yellow: #ffac0e;
+    --primary-orange: #dc6b29;
+    --seconday : #f3c681;
+}
+
+html {
+    font-family : Poppins;
+}
+
+header {
+    display         : flex;
+    justify-content : center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body #container-title {
+    overflow: hidden;
+    direction: rtl;
+    background-color: var(--primary-red);
+    height: 5em;
+    margin: 0;
+    display         : flex;
+    justify-content : center;
+    align-items   : center;
+    width: 100%;
+}
+
+body #container-title #content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+body #container-title #content h1 {
+    display         : flex;
+    justify-content : center;
+    align-items   : center;
+    color: var(--primary-yellow);
+    width: 100%;
+}
+
+body #container-title #content h1 img {
+    width  : 50px;
+    height : 50px;
+    margin : 0 15px;
+}
+
+header nav {
+    width           : 50%;
+    display         : flex;
+    justify-content : space-around;
+    align-content   : center;
+}
+
+header nav div {
+    background-color : mistyrose;
+    padding          : 1em;
+    border-radius    : 5px;
+    transition       : transform 400ms;
+}
+
+header nav div a {
+    text-decoration : none;
+    color           : gray;
+    color           : black;
+}
+
+
+header nav div:hover {
+    transform  : translateY(-10px);
+    transition : transform 400ms;
+}
+
+
+#ingredient_pizza {
+    text-align : center;
+    border-collapse: collapse;
+}
+
+#ingredient_pizza thead {
+background-color: mistyrose;
+    font-size: 1.2em;
+    font-weight : 600;
+}
+
+
+#ingredient_pizza td {
+    border: solid 2px black;
+    padding: 10px;
+}
+
