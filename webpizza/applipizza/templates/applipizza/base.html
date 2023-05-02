@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,15 +11,12 @@
     <link rel="stylesheet" href="{% static 'applipizza/css/styles.css' %}">
     <link rel="icon" href="{% static 'applipizza/img/pizza.png' %}">
 </head>
+
 <body>
-
-<div id="container-title">
-    <div id="content">
-        <h1><img src="{% static 'applipizza/img/pizza.png' %}"> LAS PIZZAS DE LA MUERTE <img src="{% static 'applipizza/img/pizza.png' %}"> </h1>
-    </div>
-</div>
-
 <header>
+    <div id="logo">
+        <img src="{% static 'applipizza/img/pizza.png' %}">
+    </div>
     <nav>
         <div><a href="/pizzas/">Les Pizzas</a></div>
         <div><a href="/ingredients/">Les Ingredients</a></div>
@@ -27,10 +25,8 @@
 <main>
     {% block content %}{% endblock %}
 </main>
-<footer>
-    Appli Pizza 2023
-</footer>
 </body>
 
 <script src="{% static 'applipizza/js/script.js' %}"></script>
+
 </html>

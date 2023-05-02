@@ -6,10 +6,10 @@ les ingredients
 
 
 {% block content %}
-<h2>Voici nos {{ingredients|length}} Ingredients </h2>
+<h2 class="title">Voici nos {{ingredients|length}} Ingredients </h2>
 <ul>
     {% for i in ingredients %}
-    <li>{{i}}</li>
+    <li>{{i.nomIngredient|capfirst}}</li>
     {% endfor %}
 </ul>
 {% endblock %}
