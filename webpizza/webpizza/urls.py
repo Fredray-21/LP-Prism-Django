@@ -29,4 +29,6 @@ urlpatterns = [
     path('pizzas/create/', views.creerPizza),
     path('pizzas/<int:pizza_id>/addIngredient/', views.ajouterIngredientDansPizza),
     path('pizzas/<int:pizza_id>/delete/', views.supprimerPizza),
+    path('pizzas/<int:pizza_id>/update/', views.afficherFormulaireModificationPizza),
+    path('pizzas/<int:pizza_id>/updated/', views.modifierPizza),
 ]

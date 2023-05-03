@@ -1,0 +1,18 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+    Modification d'une Pizza
+{% endblock %}
+
+
+{% block content %}
+    <h2 class="title">Modification d'une Pizza</h2>
+    <section class="form_container">
+        <form class="form add-pizza" action="/pizzas/{{ pizza.idPizza }}/updated/" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Envoyer">
+        </form>
+    </section>
+
+{% endblock %}

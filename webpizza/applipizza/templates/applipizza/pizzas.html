@@ -6,14 +6,21 @@
 
 
 {% block content %}
+    {% load static %}
     {% if pizzas|length > 0 %}
         <h2 class="title">Voici nos {{ pizzas|length }} Pizzas </h2>
         <ul>
             {% for p in pizzas %}
                 <li class="li-pizzas">{{ p.nomPizza|capfirst }}
-                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/"><i class="fa fa-magnifying-glass"></i></a>
-                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/update/"><i class="fa fa-pen"></i></a>
-                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/delete/"><i class="fa fa-trash"></i></a>
+                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/">
+                        <img src="{% static 'applipizza/img/magnifying-glass-solid.svg' %}" alt="logo_magnifying-glass">
+                    </a>
+                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/update/">
+                        <img src="{% static 'applipizza/img/pen-solid.svg' %}" alt="logo_pen">
+                    </a>
+                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/delete/">
+                        <img src="{% static 'applipizza/img/trash-solid.svg' %}" alt="logo_pen">
+                    </a>
                 </li>
             {% endfor %}
         </ul>

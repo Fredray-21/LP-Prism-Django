@@ -1,9 +1,10 @@
 :root {
-    --primary-red    : #B61500;
-    --primary-yellow : #ffac0e;
-    --primary-orange : #dc6b29;
-    --seconday       : #f3c681;
-    --white          : #fff;
+    --primary-red     : #B61500;
+    --primary-yellow  : #ffac0e;
+    --primary-orange  : #dc6b29;
+    --seconday        : #f3c681;
+    --white           : #fff;
+    --seconday-orange : #efb763;
 }
 
 html {
@@ -166,11 +167,11 @@ a.link-details {
     text-decoration : none;
     font-weight     : 600;
     transition      : color 0.3s;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
 }
 
-a.link-details:hover {
-    color : var(--primary-yellow);
-}
 
 .li-pizzas {
     display               : grid;
@@ -181,8 +182,13 @@ a.link-details:hover {
     width                 : 100%;
 }
 
-.li-pizzas i {
-    font-size : 1.5rem;
+.li-pizzas:hover {
+    background-color : var(--seconday-orange);
+}
+
+.li-pizzas img {
+    width  : 1.5rem;
+    height : 1.5rem;
 }
 
 main ul {

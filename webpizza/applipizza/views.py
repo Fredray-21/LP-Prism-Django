@@ -102,3 +102,19 @@ def supprimerPizza(request, pizza_id):
     lesPizzas = Pizza.objects.all()
     return render(request, 'applipizza/pizzas.html', {'pizzas': lesPizzas})
 
+
+def afficherFormulaireModificationPizza(request, pizza_id):
+    pizza = Pizza.objects.get(idPizza=pizza_id)
+    form = PizzaForm(instance=pizza)
+    return render(request, "applipizza/formulaireModificationPizza.html", {"form": form, "pizza": pizza})
+
+def modifierPizza(request, pizza_id):
+    pizza = Pizza.objects.get(idPizza=pizza_id)
+    if request.method == "POST":
+        form = PizzaForm(request.POST, instance=pizza)
+        if form.is_valid():
+            pizza = form.save()
+            return render(request, "applipizza/traitementFormulaireModificationPizza.html", {"pizza": pizza})
+    else:
+        form = PizzaForm(instance=pizza)
+    return render(request, "applipizza/formulaireModificationPizza.html", {"form": form, "pizza": pizza})
