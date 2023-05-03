@@ -11,22 +11,38 @@
         <li>{{ pizza.nomPizza|upper }} (Prix: {{ pizza.prixPizza }}€)</li>
     </ul>
 
-    <h2 class="title">Les {{ ingredients|length }} Ingrédients de la Pizzas</h2>
-    <table id="ingredient_pizza">
-        <thead>
-        <tr>
-            <td>Ingrédient</td>
-            <td>Quantité</td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for i in ingredients %}
-            <tr>
-                <td>{{ i.0.nomIngredient|capfirst }}</td>
-                <td>{{ i.1 }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% if ingredients|length  == 1 %}
+        <h2 class="title">L'ingrédients de la Pizza</h2>
+    {% elif ingredients|length > 1 %}
+        <h2 class="title">Les {{ ingredients|length }} Ingrédients de la Pizza</h2>
+    {% else %}
+        <h2 class="title">La Pizza n'a pas encore d'ingrédients</h2>
+    {% endif %}
 
+    {% if ingredients|length > 0 %}
+        <table id="ingredient_pizza">
+            <thead>
+            <tr>
+                <td>Ingrédient</td>
+                <td>Quantité</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in ingredients %}
+                <tr>
+                    <td>{{ i.ingr.nomIngredient|capfirst }}</td>
+                    <td>{{ i.qte }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <h2 class="title">Ajouter un ingrédient</h2>
+    <section class="form_container">
+        <form class="form add-ingredient" action="/pizzas/{{ pizza.idPizza }}/addIngredient/" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Envoyer">
+        </form>
+    </section>
 {% endblock %}
