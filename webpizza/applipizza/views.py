@@ -118,3 +118,27 @@ def modifierPizza(request, pizza_id):
     else:
         form = PizzaForm(instance=pizza)
     return render(request, "applipizza/formulaireModificationPizza.html", {"form": form, "pizza": pizza})
+
+
+def supprimerIngredient(request, ingredient_id):
+    ingredient = Ingredient.objects.get(idIngredient=ingredient_id)
+    ingredient.delete()
+    lesIngredients = Ingredient.objects.all()
+    return render(request, 'applipizza/ingredients.html', {'ingredients': lesIngredients})
+
+def afficherFormulaireModificationIngredient(request, ingredient_id):
+    ingredient = Ingredient.objects.get(idIngredient=ingredient_id)
+    form = IngredientForm(instance=ingredient)
+    return render(request, "applipizza/formulaireModificationIngredient.html", {"form": form, "ingredient": ingredient})
+
+def modifierIngredient(request, ingredient_id):
+    ingredient = Ingredient.objects.get(idIngredient=ingredient_id)
+    if request.method == "POST":
+        form = IngredientForm(request.POST, instance=ingredient)
+        if form.is_valid():
+            ingredient = form.save()
+            return render(request, "applipizza/traitementFormulaireModificationIngredient.html", {"ingredient": ingredient})
+    else:
+        form = IngredientForm(instance=ingredient)
+    return render(request, "applipizza/formulaireModificationIngredient.html", {"form": form, "ingredient": ingredient})
+

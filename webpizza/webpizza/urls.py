@@ -31,4 +31,7 @@ urlpatterns = [
     path('pizzas/<int:pizza_id>/delete/', views.supprimerPizza),
     path('pizzas/<int:pizza_id>/update/', views.afficherFormulaireModificationPizza),
     path('pizzas/<int:pizza_id>/updated/', views.modifierPizza),
+    path('ingredients/<int:ingredient_id>/delete/', views.supprimerIngredient),
+    path('ingredients/<int:ingredient_id>/update/', views.afficherFormulaireModificationIngredient),
+    path('ingredients/<int:ingredient_id>/updated/', views.modifierIngredient),
 ]

@@ -6,11 +6,19 @@
 
 
 {% block content %}
+    {% load static %}
     {% if ingredients|length > 0 %}
         <h2 class="title">Voici nos {{ ingredients|length }} Ingredients </h2>
         <ul>
             {% for i in ingredients %}
-                <li>{{ i.nomIngredient|capfirst }}</li>
+                <li class="li-pizzas">{{ i.nomIngredient|capfirst }}
+                    <a class="link-details" href="/ingredients/{{ i.idIngredient }}/update/">
+                        <img src="{% static 'applipizza/img/pen-solid.svg' %}" alt="logo_pen">
+                    </a>
+                    <a class="link-details" href="/ingredients/{{ i.idIngredient }}/delete/">
+                        <img src="{% static 'applipizza/img/trash-solid.svg' %}" alt="logo_pen">
+                    </a>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
