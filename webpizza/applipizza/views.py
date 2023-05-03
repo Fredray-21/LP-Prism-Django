@@ -6,7 +6,8 @@ from applipizza.forms import IngredientForm
 from applipizza.forms import PizzaForm
 from applipizza.forms import CompositionForm
 
-
+def index(request):
+    return render(request, 'applipizza/index.html')
 # Create your views here.
 def pizzas(request):
     lesPizzas = Pizza.objects.all()

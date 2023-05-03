@@ -8,7 +8,6 @@
 {% block content %}
     <h2 class="title">Modification d'un Ingredient</h2>
     <section class="form_container">
-    <h1>{{ ingredient.idIngredient }}</h1>
         <form class="form update-ingredient" action="/ingredients/{{ ingredient.idIngredient }}/updated/" method="post">
             {% csrf_token %}
             {{ form.as_div }}

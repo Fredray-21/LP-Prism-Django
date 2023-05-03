@@ -7,6 +7,35 @@
     --seconday-orange : #efb763;
 }
 
+#home {
+    width      : 100vw;
+    height     : 100vh;
+    background : url("../img/background.jpg") center;
+    background-size : cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--white);
+}
+
+#home h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+#home nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 9rem;
+}
+
+.btn {
+    text-decoration: none;
+}
+
 html {
     font-family : Poppins, serif;
     width       : 100%;
@@ -226,7 +255,7 @@ main ul {
     outline       : none;
 }
 
-.form input[type="submit"] {
+.form input[type="submit"], .btn {
     font-size        : 1.2em;
     border           : 1px solid var(--primary-red);
     border-radius    : 5px;
@@ -239,7 +268,7 @@ main ul {
     transition       : color 0.4s;
 }
 
-.form input[type="submit"]:hover {
+.form input[type="submit"]:hover ,.btn:hover {
     color      : var(--primary-yellow);
     transition : color 0.4s;
 }
