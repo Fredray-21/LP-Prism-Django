@@ -50,7 +50,7 @@ header #logo {
 header #logo img {
     width     : 10em;
     height    : 10em;
-    animation : bound 1s ease-in-out infinite;
+    animation : bound 2s ease-in-out infinite;
 }
 
 @keyframes bound {
@@ -68,26 +68,50 @@ header #logo img {
 }
 
 header nav {
-    display         : flex;
-    flex-direction  : column;
-    justify-content : flex-start;
-    align-items     : center;
     margin-top      : 2rem;
     font-size       : 2rem;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    flex-direction  : column;
+
 }
 
 header nav a {
     color           : var(--white);
     text-decoration : none;
-    font-size       : 18px;
     font-weight     : bold;
     text-transform  : uppercase;
     transition      : color 0.3s;
     font-size       : 1.5rem;
 }
 
-header nav a:hover {
+header nav a:hover, header nav a.active {
     color : var(--primary-yellow);
+}
+
+
+header nav .nav_section {
+    width           : 100%;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+    padding         : 1em 0;
+}
+
+header nav .nav_sub a {
+    font-size : 1.2rem;
+}
+
+header nav .nav_sub {
+    display         : flex;
+    align-items     : flex-end;
+    justify-content : center;
+    flex-direction  : column;
+    width           : 100%;
+    padding         : 0 1em;
+    box-sizing      : border-box;
 }
 
 main {
@@ -150,5 +174,55 @@ a.link-details:hover::after {
 }
 
 main ul {
-    font-size: 1.2em;
+    font-size : 1.2em;
 }
+
+.form_container {
+    width           : 100%;
+    display         : flex;
+    justify-content : flex-start;
+    align-items     : center;
+}
+
+.form {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : flex-end;
+    width           : auto;
+}
+
+.form > div {
+    margin-bottom : 1em;
+}
+
+.form > div label {
+    font-size : 1.2em;
+}
+
+.form > div input {
+    font-size     : 1.2em;
+    border        : 1px solid #000;
+    border-radius : 5px;
+    padding       : 5px;
+    outline       : none;
+}
+
+.form input[type="submit"] {
+    font-size        : 1.2em;
+    border           : 1px solid var(--primary-red);
+    border-radius    : 5px;
+    padding          : 0.5em 1em;
+    outline          : none;
+    cursor           : pointer;
+    background-color : var(--primary-red);
+    color            : var(--white);
+    font-weight      : 400;
+    transition       : color 0.4s;
+}
+
+.form input[type="submit"]:hover {
+    color      : var(--primary-yellow);
+    transition : color 0.4s;
+}
+

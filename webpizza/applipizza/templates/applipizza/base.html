@@ -18,8 +18,27 @@
         <img src="{% static 'applipizza/img/pizza.png' %}">
     </div>
     <nav>
-        <div><a href="/pizzas/">Les Pizzas</a></div>
-        <div><a href="/ingredients/">Les Ingredients</a></div>
+        <div class="nav_section">
+            <div class="nav_main">
+                <a href="/pizzas/" {% if request.path == '/pizzas/' %}class="active"{% endif %}>Les Pizzas</a>
+            </div>
+            <div class="nav_sub">
+                <a href="/pizzas/add/" {% if request.path == '/pizzas/add/' %}class="active"{% endif %}>Ajouter</a>
+                <a href="#">Supprimer</a>
+                <a href="#">Modifier</a>
+            </div>
+        </div>
+
+        <div class="nav_section">
+            <div class="nav_main">
+                <a href="/ingredients/" {% if request.path == '/ingredients/' %}class="active"{% endif %}>Les Ingredients</a>
+            </div>
+            <div class="nav_sub">
+                <a href="/ingredients/add/" {% if request.path == '/ingredients/add/' %}class="active"{% endif %}>Ajouter</a>
+                <a href="#">Supprimer</a>
+                <a href="#">Modifier</a>
+            </div>
+        </div>
     </nav>
 </header>
 <main>

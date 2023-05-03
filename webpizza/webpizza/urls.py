@@ -24,4 +24,7 @@ urlpatterns = [
     path('ingredients/', views.ingredients),
     path('pizzas/<int:pizza_id>/', views.pizza),
     path('ingredients/add/', views.formulaireCreationIngredient),
+    path('ingredients/create/', views.creerIngredient),
+    path('pizzas/add/', views.formulaireCreationPizza),
+    path('pizzas/create/', views.creerPizza),
 ]
