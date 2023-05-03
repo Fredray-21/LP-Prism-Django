@@ -94,3 +94,11 @@ def ajouterIngredientDansPizza(request, pizza_id):
     else:
         form = CompositionForm()
     return render(request, "applipizza/formulaireAjoutIngredientDansPizza.html", {"form": form})
+
+
+def supprimerPizza(request, pizza_id):
+    pizza = Pizza.objects.get(idPizza=pizza_id)
+    pizza.delete()
+    lesPizzas = Pizza.objects.all()
+    return render(request, 'applipizza/pizzas.html', {'pizzas': lesPizzas})
+

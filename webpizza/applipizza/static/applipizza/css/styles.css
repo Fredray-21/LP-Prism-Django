@@ -168,9 +168,21 @@ a.link-details {
     transition      : color 0.3s;
 }
 
-a.link-details:hover::after {
-    content : "  <";
-    color   : var(--primary-red);
+a.link-details:hover {
+    color : var(--primary-yellow);
+}
+
+.li-pizzas {
+    display               : grid;
+    grid-template-columns : repeat(4, 1fr);
+    padding               : 1em 0;
+    text-align            : center;
+    border-bottom         : 1px solid var(--primary-red);
+    width                 : 100%;
+}
+
+.li-pizzas i {
+    font-size : 1.5rem;
 }
 
 main ul {

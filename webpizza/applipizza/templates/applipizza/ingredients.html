@@ -1,15 +1,19 @@
 {% extends 'applipizza/base.html' %}
 
 {% block title %}
-les ingredients
+    les ingredients
 {% endblock %}
 
 
 {% block content %}
-<h2 class="title">Voici nos {{ingredients|length}} Ingredients </h2>
-<ul>
-    {% for i in ingredients %}
-    <li>{{i.nomIngredient|capfirst}}</li>
-    {% endfor %}
-</ul>
+    {% if ingredients|length > 0 %}
+        <h2 class="title">Voici nos {{ ingredients|length }} Ingredients </h2>
+        <ul>
+            {% for i in ingredients %}
+                <li>{{ i.nomIngredient|capfirst }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2 class="title">Aucun ingredient n'est disponible</h2>
+    {% endif %}
 {% endblock %}

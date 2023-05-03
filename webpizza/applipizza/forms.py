@@ -27,5 +27,3 @@ class CompositionForm(ModelForm):
     class Meta:
         model = Composition
         fields = ['ingredient', 'quantite']
-
-

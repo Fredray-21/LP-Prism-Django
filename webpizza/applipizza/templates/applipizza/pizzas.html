@@ -6,10 +6,19 @@
 
 
 {% block content %}
-    <h2 class="title">Voici nos {{ pizzas|length }} Pizzas </h2>
-    <ul>
-        {% for p in pizzas %}
-            <li>{{ p.nomPizza|capfirst }} | <a class="link-details" href="/pizzas/{{ p.idPizza }}/">Détails sur cette pizza</a></li>
-        {% endfor %}
-    </ul>
+    {% if pizzas|length > 0 %}
+        <h2 class="title">Voici nos {{ pizzas|length }} Pizzas </h2>
+        <ul>
+            {% for p in pizzas %}
+                <li class="li-pizzas">{{ p.nomPizza|capfirst }}
+                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/"><i class="fa fa-magnifying-glass"></i></a>
+                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/update/"><i class="fa fa-pen"></i></a>
+                    <a class="link-details" href="/pizzas/{{ p.idPizza }}/delete/"><i class="fa fa-trash"></i></a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2 class="title">Aucune pizza n'est disponible</h2>
+    {% endif %}
+
 {% endblock %}
