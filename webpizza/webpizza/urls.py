@@ -35,5 +35,5 @@ urlpatterns = [
     path('ingredients/<int:ingredient_id>/delete/', views.supprimerIngredient),
     path('ingredients/<int:ingredient_id>/update/', views.afficherFormulaireModificationIngredient),
     path('ingredients/<int:ingredient_id>/updated/', views.modifierIngredient),
-
+    path('pizzas/<int:pizza_id>/deleteIngredient/<int:composition_id>/', views.supprimerIngredientDansPizza),
 ]

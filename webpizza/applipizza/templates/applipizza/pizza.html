@@ -6,6 +6,7 @@
 
 
 {% block content %}
+    {% load static %}
     <h2 class="title">Voici notre pizza</h2>
     <ul>
         <li>{{ pizza.nomPizza|upper }} (Prix: {{ pizza.prixPizza }}€)</li>
@@ -25,6 +26,7 @@
             <tr>
                 <td>Ingrédient</td>
                 <td>Quantité</td>
+                <td>Action</td>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +34,11 @@
                 <tr>
                     <td>{{ i.ingr.nomIngredient|capfirst }}</td>
                     <td>{{ i.qte }}</td>
+                    <td>
+                        <a class="btn-del" href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{i.idCompo}}">
+                            <img src="{% static 'applipizza/img/trash-solid.svg' %}" alt="logo_trash">
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

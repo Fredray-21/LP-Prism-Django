@@ -8,32 +8,32 @@
 }
 
 #home {
-    width      : 100vw;
-    height     : 100vh;
-    background : url("../img/background.jpg") center;
+    width           : 100vw;
+    height          : 100vh;
+    background      : url("../img/background.jpg") center;
     background-size : cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: var(--white);
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    flex-direction  : column;
+    color           : var(--white);
 }
 
 #home h1 {
-    font-size: 4rem;
-    font-weight: 700;
+    font-size   : 4rem;
+    font-weight : 700;
 }
 
 #home nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    height: 9rem;
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+    flex-direction  : column;
+    height          : 9rem;
 }
 
 .btn {
-    text-decoration: none;
+    text-decoration : none;
 }
 
 html {
@@ -187,8 +187,13 @@ main {
     border : 1px solid var(--primary-red);
 }
 
-#ingredient_pizza tbody td:nth-child(2) {
+#ingredient_pizza tbody td:not(:nth-child(1)) {
     text-align : center;
+}
+#ingredient_pizza tbody td:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 a.link-details {
@@ -268,8 +273,18 @@ main ul {
     transition       : color 0.4s;
 }
 
-.form input[type="submit"]:hover ,.btn:hover {
+.form input[type="submit"]:hover, .btn:hover {
     color      : var(--primary-yellow);
     transition : color 0.4s;
 }
 
+#ingredient_pizza .btn-del img {
+    width  : 1.5rem;
+    height : 1.5rem;
+}
+
+#ingredient_pizza .btn-del {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
