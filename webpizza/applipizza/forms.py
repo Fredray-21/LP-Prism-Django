@@ -22,7 +22,7 @@ class CompositionForm(ModelForm):
         pizza = Pizza.objects.get(idPizza=idPizza)
         used_ingredients = Composition.objects.filter(pizza=pizza).values_list('ingredient', flat=True)
         self.fields['ingredient'].label_from_instance = lambda obj: obj.nomIngredient.capitalize()
-        self.fields['ingredient'].queryset = Ingredient.objects.exclude(idIngredient__in=used_ingredients)
+        # self.fields['ingredient'].queryset = Ingredient.objects.exclude(idIngredient__in=used_ingredients)
 
     class Meta:
         model = Composition

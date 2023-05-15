@@ -29,12 +29,25 @@
 
         <div class="nav_section">
             <div class="nav_main">
-                <a href="/ingredients/" {% if request.path == '/ingredients/' %}class="active"{% endif %}>Les Ingredients</a>
+                <a href="/ingredients/" {% if request.path == '/ingredients/' %}class="active"{% endif %}>Les
+                    Ingredients</a>
             </div>
             <div class="nav_sub">
                 <a href="/ingredients/add/" {% if request.path == '/ingredients/add/' %}class="active"{% endif %}>Ajouter</a>
             </div>
         </div>
+
+        {% if user.is_authenticated %}
+            <div id='logout'>
+                <span>bienvenue,{{ user }}</span>
+                <a href="{% url 'logout' %}">Déconnexion</a>
+            </div>
+        {% else %}
+            <div id='login'>
+                <a href="{% url 'login' %}">Connexion</a>
+            </div>
+        {% endif %}
+
     </nav>
 </header>
 <main>
