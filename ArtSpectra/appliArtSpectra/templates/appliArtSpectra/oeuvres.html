@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Les Oeuvres</title>
+    <link rel="stylesheet" href="{% static 'appliArtSpectra/css/styles.css' %}">
+</head>
+<body>
+{% for oeuvre in oeuvres %}
+    <p>{{ oeuvre.nomOeuvre }}</p>
+    <p>{{ oeuvre.dimensionOeuvre }}</p>
+{% endfor %}
+</body>
+</html>
