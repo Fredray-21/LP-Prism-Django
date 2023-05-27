@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'applipizza/css/styles.css' %}">
+    <link rel="icon" href="{% static 'applipizza/img/pizza.png' %}">
+</head>
+
+<body>
+<header>
+    <div id="logo">
+        <img src="{% static 'applipizza/img/pizza.png' %}" alt='logo_pizza'>
+    </div>
+    <nav>
+        <div class="nav_section">
+            <div class="nav_main">
+                <a href="/pizzas/" {% if request.path == '/pizzas/' %}class="active"{% endif %}>Les Pizzas</a>
+            </div>
+            <div class="nav_sub">
+                <a href="/pizzas/add/" {% if request.path == '/pizzas/add/' %}class="active"{% endif %}>Ajouter</a>
+            </div>
+        </div>
+
+        <div class="nav_section">
+            <div class="nav_main">
+                <a href="/ingredients/" {% if request.path == '/ingredients/' %}class="active"{% endif %}>Les
+                    Ingredients</a>
+            </div>
+            <div class="nav_sub">
+                <a href="/ingredients/add/" {% if request.path == '/ingredients/add/' %}class="active"{% endif %}>Ajouter</a>
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div id='logout'>
+                <span>bienvenue,{{ user }}</span>
+                <a href="{% url 'logout' %}">Déconnexion</a>
+            </div>
+        {% else %}
+            <div id='login'>
+                <a href="{% url 'login' %}">Connexion</a>
+            </div>
+        {% endif %}
+
+    </nav>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+
+<script src="{% static 'applipizza/js/script.js' %}"></script>
+
+</html>
