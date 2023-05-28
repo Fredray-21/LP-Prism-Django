@@ -1,4 +1,54 @@
-html,body {
-    background-color: red;
+html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+header nav h1 {
+    font-family: "Slackside One", sans-serif;
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+header nav ul li {
+    display: inline;
+    padding: 10px;
+}
+
+header nav ul li a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+header nav ul li a:active {
+    color: #000000;
+    text-decoration: underline;
+}
+
+header nav ul li a:visited {
+    color: #000000;
+    text-decoration: none;
 }
