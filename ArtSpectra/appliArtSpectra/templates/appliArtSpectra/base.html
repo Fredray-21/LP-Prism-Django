@@ -26,6 +26,14 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
+    <div id="container-connexion" >
+        {% if user.is_authenticated %}
+            <p>{{ user.username }}</p>
+            <p><a href="{%  url 'logout' %}">Se déconnecter</a></p>
+        {% else  %}
+            <p><a href="{%  url 'signup' %}">S'inscrire</a></p>
+        {% endif %}
+    </div>
 </header>
 <main>
     {% block content %}{% endblock %}

@@ -18,14 +18,18 @@ from django.contrib import admin
 from django.urls import path
 from appliArtSpectra import views
 from django.conf.urls.static import static
-
+from accounts.views import signup, logout_user
 from ArtSpectra import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.accueil, name='accueil'),
+    path('', views.oeuvres, name='accueil'),
     path('oeuvres/', views.oeuvres, name='oeuvres'),
     path('oeuvres/<str:slug>/<int:idOeuvre>/', views.oeuvre, name='oeuvre'),
     path('oeuvres/<str:slug>/', views.typeOeuvre, name='typeOeuvre'),
+
+
+    path('signup/', signup, name='signup'),
+    path('logout/', logout_user, name='logout'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
