@@ -27,6 +27,8 @@ class Oeuvre(models.Model):
     # auteurOeuvre est une clé étrangère vers le modèle Shopper
     auteurOeuvre = models.ForeignKey(Shopper, on_delete=models.CASCADE, verbose_name="Auteur de l'oeuvre")
 
+    quantiteOeuvre = models.IntegerField(verbose_name="Quantité de l'oeuvre")
+
     # une methode de type "toString" pour afficher l'objet
     def __str__(self):
         return 'oeuvre ' + self.nomOeuvre

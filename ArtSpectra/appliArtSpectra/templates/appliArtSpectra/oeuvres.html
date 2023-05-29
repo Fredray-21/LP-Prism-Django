@@ -12,7 +12,7 @@
             <a href="/oeuvres/{{ oeuvre.slug }}/{{ oeuvre.idOeuvre }}/">
                 <div class="card-oeuvre">
                     <img class="card-img" src="/media/{{ oeuvre.imageOeuvre }}" alt="{{ oeuvre.nomOeuvre }}"/>
-                    <p class="card-name">{{ oeuvre.nomOeuvre }}
+                    <p class="card-name">{{ oeuvre.nomOeuvre|capfirst }}
                         <span class="--artiste">par {{ oeuvre.auteurOeuvre|capfirst }}</span>
                         <span class="--type">{{ oeuvre.slug|capfirst }} | {{ oeuvre.dimensionOeuvre }}</span>
                     </p>

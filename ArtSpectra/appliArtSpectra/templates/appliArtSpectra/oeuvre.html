@@ -16,11 +16,36 @@
                 <p>par {{ oeuvre.auteurOeuvre|capfirst }}</p>
             </div>
             <div class="detailOeuvre--content">
-                <p id="dimension" >{{ oeuvre.slug|capfirst }}, {{ oeuvre.dimensionOeuvre }} cm </p>
-                <p id="dateCreation" >{{ oeuvre.dateCreationOeuvre }}</p>
+                <p id="dimension">{{ oeuvre.slug|capfirst }}, {{ oeuvre.dimensionOeuvre }} cm </p>
+                <p id="dateCreation">{{ oeuvre.dateCreationOeuvre }}</p>
                 <p>{{ oeuvre.descriptionOeuvre }}</p>
+                <p id="quantite">Quantité disponible :
+                    {% if oeuvre.quantiteOeuvre == 1 %}
+                        <b>Oeuvre unique</b>
+                    {% else %}
+                        <b>{{ oeuvre.quantiteOeuvre }}</b>
+                    {% endif %}
+                </p>
                 <a id="addPanier" href="#"><span>Acheter cette œuvre</span> - <span>{{ oeuvre.prixOeuvre }}€</span></a>
             </div>
         </div>
     </div>
+
+    <div id="plus-artiste">
+        <h1>Voir plus d'oeuvres de {{ oeuvre.auteurOeuvre|capfirst }}</h1>
+        <div class="container-oeuvre-plus">
+            {% for oeuvre in oeuvresAuteur %}
+                <a href="/oeuvres/{{ oeuvre.slug }}/{{ oeuvre.idOeuvre }}/">
+                    <div class="oeuvre-plus">
+                        <img class="imgOeuvrePlus" src="/media/{{ oeuvre.imageOeuvre }}" alt="{{ oeuvre.nomOeuvre }}">
+                        <p class="plus-content">
+                            <span>{{ oeuvre.nomOeuvre|capfirst }}</span>
+                            <span>{{ oeuvre.prixOeuvre }}€</span>
+                        </p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

@@ -18,8 +18,7 @@ def signup(request):
             return redirect('oeuvres')
     else:
         form_signup = UserRegistrationForm()
-        form_login = UserLoginForm()
-    return render(request, 'accounts/signup-login.html', {'form_signup': form_signup, 'form_login': form_login})
+    return render(request, 'accounts/signup-login.html', {'form_signup': form_signup})
 
 
 def logout_user(request):
@@ -43,5 +42,4 @@ def login_user(request):
                 messages.error(request, f'Nom d\'utilisateur ou mot de passe incorrect')
     else:
         form_login = UserLoginForm()
-        form_signup = UserRegistrationForm()
-    return render(request, 'accounts/signup-login.html', {'form_signup': form_signup, 'form_login': form_login})
+    return render(request, 'accounts/signup-login.html', {'form_login': form_login})

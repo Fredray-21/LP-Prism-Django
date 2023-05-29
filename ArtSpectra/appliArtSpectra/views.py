@@ -15,11 +15,12 @@ def oeuvres(request):
 def oeuvre(request, slug, idOeuvre):
     try:
         oeuvre = get_object_or_404(Oeuvre, idOeuvre=idOeuvre)
+        # 4 premières oeuvres de l'auteur de l'oeuvre en cours sans l'oeuvre en cours
+        oeuvresAuteur = Oeuvre.objects.filter(auteurOeuvre=oeuvre.auteurOeuvre).exclude(idOeuvre=oeuvre.idOeuvre)[:4]
         if oeuvre.slug != slug:
             return redirect('oeuvre', slug=oeuvre.slug, idOeuvre=oeuvre.idOeuvre)
         else :
-            return render(request, 'appliArtSpectra/oeuvre.html', {'oeuvre': oeuvre})
-
+            return render(request, 'appliArtSpectra/oeuvre.html', {'oeuvre': oeuvre, 'oeuvresAuteur': oeuvresAuteur})
     except: Oeuvre.DoesNotExist
     return redirect('oeuvres')
 
