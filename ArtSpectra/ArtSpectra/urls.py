@@ -17,8 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from appliArtSpectra import views
+from django.conf.urls.static import static
+
+from ArtSpectra import settings
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.accueil, name='accueil'),
     path('oeuvres/', views.oeuvres, name='oeuvres'),
-]
+    path('oeuvres/<str:slug>/<int:idOeuvre>/', views.oeuvre, name='oeuvre'),
+    path('oeuvres/<str:slug>/', views.typeOeuvre, name='typeOeuvre'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

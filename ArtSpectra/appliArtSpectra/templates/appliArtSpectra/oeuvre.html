@@ -1,0 +1,26 @@
+{% extends 'appliArtSpectra/base.html' %}
+
+{% block title %}
+    Oeuvre - ArtSpectra
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div id="container-detail-oeuvre">
+        <div class="containerImgDetailOeuvre">
+            <img class="imgDetailOeuvre" src="/media/{{ oeuvre.imageOeuvre }}" alt="{{ oeuvre.nomOeuvre }}">
+        </div>
+        <div class="containerInfoDetailOeuvre">
+            <div class="detailOeuvre--title">
+                <h1>{{ oeuvre.nomOeuvre|capfirst }}</h1>
+                <p>par {{ oeuvre.artisteOeuvre }}</p>
+            </div>
+            <div class="detailOeuvre--content">
+                <p id="dimension" >{{ oeuvre.slug|capfirst }}, {{ oeuvre.dimensionOeuvre }} cm </p>
+                <p id="dateCreation" >{{ oeuvre.dateCreationOeuvre }}</p>
+                <p>{{ oeuvre.descriptionOeuvre }}</p>
+                <a id="addPanier" href="#">Acheter cette œuvre</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
