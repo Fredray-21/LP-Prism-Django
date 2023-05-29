@@ -13,13 +13,13 @@
         <div class="containerInfoDetailOeuvre">
             <div class="detailOeuvre--title">
                 <h1>{{ oeuvre.nomOeuvre|capfirst }}</h1>
-                <p>par {{ oeuvre.artisteOeuvre }}</p>
+                <p>par {{ oeuvre.auteurOeuvre|capfirst }}</p>
             </div>
             <div class="detailOeuvre--content">
                 <p id="dimension" >{{ oeuvre.slug|capfirst }}, {{ oeuvre.dimensionOeuvre }} cm </p>
                 <p id="dateCreation" >{{ oeuvre.dateCreationOeuvre }}</p>
                 <p>{{ oeuvre.descriptionOeuvre }}</p>
-                <a id="addPanier" href="#">Acheter cette œuvre</a>
+                <a id="addPanier" href="#"><span>Acheter cette œuvre</span> - <span>{{ oeuvre.prixOeuvre }}€</span></a>
             </div>
         </div>
     </div>

@@ -13,12 +13,11 @@
                 <div class="card-oeuvre">
                     <img class="card-img" src="/media/{{ oeuvre.imageOeuvre }}" alt="{{ oeuvre.nomOeuvre }}"/>
                     <p class="card-name">{{ oeuvre.nomOeuvre }}
-                        <span class="--artiste">artiste</span>
+                        <span class="--artiste">par {{ oeuvre.auteurOeuvre|capfirst }}</span>
                         <span class="--type">{{ oeuvre.slug|capfirst }} | {{ oeuvre.dimensionOeuvre }}</span>
                     </p>
                 </div>
             </a>
         {% endfor %}
     </div>
-
 {% endblock %}

@@ -12,3 +12,12 @@ class UserRegistrationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email')
 
 
+class UserLoginForm(forms.Form):
+    username = forms.CharField(label='Nom d\'utilisateur')
+    password = forms.CharField(label='Mot d e passe', widget=forms.PasswordInput)
+
+    class Meta:
+        model = Shopper
+        fields = ('username', 'password')
+
+

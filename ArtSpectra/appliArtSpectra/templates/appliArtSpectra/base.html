@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="{% static 'appliArtSpectra/css/styles.css' %}">
 {#    <link rel="icon" href="{% static 'applipizza/img/pizza.png' %}">#}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap" />
-
 </head>
 
 <body>
+<div id="loader"></div>
 <header>
     <nav>
         <h1>ArtSpectra</h1>
         <ul>
-            <li><a href="#">Accueil</a></li>
+            <li><a href="{%  url 'accueil' %}">Accueil</a></li>
             <li><a href="#">Artistes</a></li>
             <li><a href="{% url 'oeuvres' %}">Oeuvres</a></li>
             <li><a href="#">Expositions</a></li>
@@ -31,7 +31,7 @@
             <p>{{ user.username }}</p>
             <p><a href="{%  url 'logout' %}">Se déconnecter</a></p>
         {% else  %}
-            <p><a href="{%  url 'signup' %}">S'inscrire</a></p>
+            <p><a href="{%  url 'login' %}">Connexion</a> / <a href="{%  url 'signup' %}">S'inscrire</a></p>
         {% endif %}
     </div>
 </header>
@@ -40,6 +40,5 @@
 </main>
 </body>
 
-{#<script src="{% static 'applipizza/js/script.js' %}"></script>#}
-
+<script src="{% static 'appliArtSpectra/js/script.js' %}"></script>
 </html>

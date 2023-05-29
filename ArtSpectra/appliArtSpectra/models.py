@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import Shopper
 
 # Create your models here.
 class Oeuvre(models.Model):
@@ -19,7 +20,12 @@ class Oeuvre(models.Model):
 
     imageOeuvre = models.ImageField(upload_to='images/oeuvres/', verbose_name="Image de l'oeuvre", blank=True)
 
+    prixOeuvre = models.IntegerField(verbose_name="Prix de l'oeuvre")
+
     slug = models.SlugField(max_length=100, verbose_name="Slug de l'oeuvre", unique=False)
+
+    # auteurOeuvre est une clé étrangère vers le modèle Shopper
+    auteurOeuvre = models.ForeignKey(Shopper, on_delete=models.CASCADE, verbose_name="Auteur de l'oeuvre")
 
     # une methode de type "toString" pour afficher l'objet
     def __str__(self):
