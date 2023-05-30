@@ -3,6 +3,7 @@ from accounts.forms import UserRegistrationForm, UserLoginForm, UserUpdateForm
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from accounts.models import Shopper
 
 # Create your views here.
 def signup(request):
@@ -55,3 +56,13 @@ def profil(request):
     else:
         form_profil = UserUpdateForm(instance=request.user)
     return render(request, 'accounts/profil.html', {'form_profil': form_profil})
+
+
+def artiste(request, username):
+    try :
+        user = Shopper.objects.get(username=username)
+    except :
+        messages.error(request, f'Ce profil n\'existe pas')
+        return redirect('accueil')
+
+    return render(request, 'accounts/artiste.html', {'user': user})

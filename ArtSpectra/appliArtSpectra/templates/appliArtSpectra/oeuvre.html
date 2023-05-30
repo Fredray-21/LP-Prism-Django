@@ -13,7 +13,7 @@
         <div class="containerInfoDetailOeuvre">
             <div class="detailOeuvre--title">
                 <h1>{{ oeuvre.nomOeuvre|capfirst }}</h1>
-                <p>par {{ oeuvre.auteurOeuvre|capfirst }}</p>
+                <p>par <a href="{% url 'artiste' oeuvre.auteurOeuvre %}">{{ oeuvre.auteurOeuvre|capfirst }}</a></p>
             </div>
             <div class="detailOeuvre--content">
                 <p id="dimension">{{ oeuvre.slug|capfirst }}, {{ oeuvre.dimensionOeuvre }} cm </p>
