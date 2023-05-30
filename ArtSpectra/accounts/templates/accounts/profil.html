@@ -1,0 +1,49 @@
+{% extends 'appliArtSpectra/base.html' %}
+
+{% block title %}
+    Profil
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div id="form_profil" class="formSL">
+        <h1>Votre profil</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {% for field in form_profil %}
+                    {% if field == form_profil.presentation %}
+                        <tr class="input-presentation">
+                            {% elif field == form_profil.avatar and form_profil.avatar.value %}
+                        <tr class="input-avatar">
+                            <td>
+                                {% if field.value %}
+                                    <img class="imgAvatar" src="{{ field.value.url }}" alt="Avatar">
+                                {% endif %}
+                            </td>
+                            <td>{{ field }}</td>
+                            {% else %}
+                        <tr>
+                    {% endif %}
+
+                {% if field != form_profil.avatar or not form_profil.avatar.value %}
+                    <td>{{ field.label_tag }}</td>
+                    <td>{{ field }}</td>
+                {% endif %}
+
+                </tr>
+                    {% for error in field.errors %}
+                        <tr>
+                            <td></td>
+                            <td class="alert alert-danger">{{ error }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </table>
+
+            <input type="submit" value="Enregistrer les modifications">
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from accounts.forms import UserRegistrationForm, UserLoginForm
+from accounts.forms import UserRegistrationForm, UserLoginForm, UserUpdateForm
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -43,3 +43,15 @@ def login_user(request):
     else:
         form_login = UserLoginForm()
     return render(request, 'accounts/signup-login.html', {'form_login': form_login})
+
+
+def profil(request):
+    if request.method == 'POST':
+        form_profil = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form_profil.is_valid():
+            form_profil.save()
+            messages.success(request, f'Votre profil a été mis à jour avec succès')
+            return redirect('profil')
+    else:
+        form_profil = UserUpdateForm(instance=request.user)
+    return render(request, 'accounts/profil.html', {'form_profil': form_profil})

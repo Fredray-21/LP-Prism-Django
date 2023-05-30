@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'appliArtSpectra/css/styles.css' %}">
-{#    <link rel="icon" href="{% static 'applipizza/img/pizza.png' %}">#}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap" />
+    {#    <link rel="icon" href="{% static 'applipizza/img/pizza.png' %}">#}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap"/>
 </head>
 
 <body>
@@ -19,22 +19,34 @@
     <nav>
         <h1>ArtSpectra</h1>
         <ul>
-            <li><a href="{%  url 'accueil' %}">Accueil</a></li>
-            <li><a href="#">Artistes</a></li>
-            <li><a href="{% url 'oeuvres' %}">Oeuvres</a></li>
-            <li><a href="#">Expositions</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'accueil' %}--active{% endif %}"
+                   href="{% url 'accueil' %}">Accueil</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'artiste' %}--active{% endif %}"
+                   href="#">Artistes</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'oeuvres' %}--active{% endif %}"
+                   href="{% url 'oeuvres' %}">Oeuvres</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'expositions' %}--active{% endif %}" href="#">Expositions</a>
+            </li>
+            <li><a class="{% if request.resolver_match.url_name == 'contact' %}--active{% endif %}" href="#">Contact</a>
+            </li>
         </ul>
     </nav>
-    <div id="container-connexion" >
+    <div id="container-connexion">
         {% if user.is_authenticated %}
-            <p>{{ user.username }}</p>
-            <p><a href="{%  url 'logout' %}">Se déconnecter</a></p>
-        {% else  %}
-            <p><a href="{%  url 'login' %}">Connexion</a> / <a href="{%  url 'signup' %}">S'inscrire</a></p>
+            <a href="{% url 'profil' %}" class="btn btn-primary">
+                <div class="row-name">
+                    <p>{{ user.username }}</p>
+                    <img class="user-avatar" src="{% if user.avatar != '' %}{{ user.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}" alt="avatar">
+                </div>
+            </a>
+
+            <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+        {% else %}
+            <p><a href="{% url 'login' %}">Connexion</a> / <a href="{% url 'signup' %}">S'inscrire</a></p>
         {% endif %}
     </div>
 </header>
+
 <main>
     {% block content %}{% endblock %}
 </main>
