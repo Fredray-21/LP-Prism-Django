@@ -38,5 +38,3 @@ def typeOeuvre(request, slug):
     else:
         return redirect('oeuvres')
 
-def profil(request):
-    return render(request, 'appliArtSpectra/profil.html')

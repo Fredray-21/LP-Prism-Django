@@ -6,6 +6,41 @@
 
 {% block content %}
     {% load static %}
-    <h1>LE PROFILS DE {{ user.username }} </h1>
+    <div id="container-artiste">
+        <div id="profil-artiste">
+            <div id="container-profil">
+                <div id="profil-artiste-img">
+                    <img src="
+                            {% if user.avatar != '' %}{{ user.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}"
+                         alt="avatar">
+                </div>
+                <div id="profil-artiste-info">
+                    <h2>{{ user.username|capfirst }}</h2>
+                    <p>{{ user.first_name }} {{ user.last_name }}</p>
+                    <p>{{ user.email }}</p>
+                    {% if user.presentation != '' %}
+                        <h3>Présentation :</h3>
+                        <p>{{ user.presentation }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div id="profil-artiste-oeuvres">
+                <h1>Les oeuvres de {{ user.username|capfirst }}</h1>
+                <div class="container-oeuvres-artiste">
+                    {% for oeuvre in oeuvreDeArtiste %}
+                        <a href="/oeuvres/{{ oeuvre.slug }}/{{ oeuvre.idOeuvre }}/">
+                            <div class="oeuvre-artiste">
+                                <img class="imgOeuvreArtiste" src="{{ oeuvre.imageOeuvre.url }}"
+                                     alt="{{ oeuvre.nomOeuvre }}">
+                                <p class="oeuvre-content">
+                                    <span>{{ oeuvre.nomOeuvre|capfirst }}</span>
+                                    <span>{{ oeuvre.prixOeuvre }}€</span>
+                                </p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
 {% endblock %}

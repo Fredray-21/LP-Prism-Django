@@ -265,6 +265,15 @@ header #container-connexion .row-name img.user-avatar {
     padding         : 0;
 }
 
+#container-detail-oeuvre div.containerInfoDetailOeuvre a.link-auteur {
+    font-weight     : bold;
+    margin          : 0;
+    padding         : 0;
+    box-sizing      : border-box;
+    text-decoration : underline;
+    color           : black;
+}
+
 #container-detail-oeuvre div.containerInfoDetailOeuvre .detailOeuvre--title h1 {
     font-size   : 3rem;
     font-weight : bold;
@@ -336,7 +345,8 @@ header #container-connexion .row-name img.user-avatar {
     color           : white;
 }
 
-#plus-artiste .container-oeuvre-plus {
+#plus-artiste .container-oeuvre-plus,
+#container-artiste #profil-artiste-oeuvres .container-oeuvres-artiste {
     display         : flex;
     align-items     : center;
     justify-content : flex-start;
@@ -347,7 +357,8 @@ header #container-connexion .row-name img.user-avatar {
     box-sizing      : border-box;
 }
 
-#plus-artiste .container-oeuvre-plus .oeuvre-plus {
+#plus-artiste .container-oeuvre-plus .oeuvre-plus,
+#container-artiste #profil-artiste-oeuvres .container-oeuvres-artiste .oeuvre-artiste {
     display         : flex;
     justify-content : center;
     align-items     : center;
@@ -358,7 +369,8 @@ header #container-connexion .row-name img.user-avatar {
     position        : relative;
 }
 
-#plus-artiste .container-oeuvre-plus .oeuvre-plus img.imgOeuvrePlus {
+#plus-artiste .container-oeuvre-plus .oeuvre-plus img.imgOeuvrePlus,
+#container-artiste #profil-artiste-oeuvres .container-oeuvres-artiste .oeuvre-artiste img.imgOeuvreArtiste {
     width      : 20em;
     height     : 20em;
     box-sizing : border-box;
@@ -368,12 +380,14 @@ header #container-connexion .row-name img.user-avatar {
     transition : all 0.4s ease-in-out;
 }
 
-#plus-artiste .container-oeuvre-plus .oeuvre-plus:hover img.imgOeuvrePlus {
+#plus-artiste .container-oeuvre-plus .oeuvre-plus:hover img.imgOeuvrePlus,
+#container-artiste #profil-artiste-oeuvres .container-oeuvres-artiste .oeuvre-artiste:hover img.imgOeuvreArtiste {
     opacity    : 0.8;
     transition : all 0.4s ease-in-out;
 }
 
-#plus-artiste .plus-content {
+#plus-artiste .plus-content,
+#container-artiste #profil-artiste-oeuvres .oeuvre-content {
     display         : flex;
     justify-content : space-around;
     align-items     : center;
@@ -497,3 +511,51 @@ div.formSL form input {
     vertical-align : middle;
     margin         : 1.5rem 0;
 }
+
+#container-artiste {
+    margin-top : 2rem;
+}
+
+
+#container-artiste #container-profil {
+    display         : flex;
+    justify-content : flex-start;
+    align-items     : center;
+    gap             : 2rem;
+    padding         : 0 20rem;
+}
+
+#container-artiste #profil-artiste #profil-artiste-info {
+    border-left  : 1px solid gray;
+    padding-left : 1rem;
+}
+
+#container-artiste #profil-artiste #profil-artiste-img img {
+    width         : 10rem;
+    height        : 10rem;
+    box-sizing    : border-box;
+    margin        : 0;
+    padding       : 0;
+    object-fit    : cover;
+    border-radius : 50%;
+}
+
+
+
+#container-artiste #profil-artiste-oeuvres {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : flex-start;
+    width           : 100%;
+    height          : 100%;
+    margin          : 5rem 0 0 0;
+    padding         : 0 2rem 10rem 2rem;
+    box-sizing      : border-box;
+}
+
+#container-artiste #profil-artiste-oeuvres a {
+    text-decoration : none;
+    color           : white;
+}
+

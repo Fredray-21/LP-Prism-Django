@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from accounts.models import Shopper
+from appliArtSpectra.models import Oeuvre
 
 # Create your views here.
 def signup(request):
@@ -61,8 +62,9 @@ def profil(request):
 def artiste(request, username):
     try :
         user = Shopper.objects.get(username=username)
+        oeuvreDeArtiste = Oeuvre.objects.filter(auteurOeuvre=user)
     except :
         messages.error(request, f'Ce profil n\'existe pas')
         return redirect('accueil')
 
-    return render(request, 'accounts/artiste.html', {'user': user})
+    return render(request, 'accounts/artiste.html', {'user': user, 'oeuvreDeArtiste': oeuvreDeArtiste})

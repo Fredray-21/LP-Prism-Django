@@ -13,7 +13,7 @@
         <div class="containerInfoDetailOeuvre">
             <div class="detailOeuvre--title">
                 <h1>{{ oeuvre.nomOeuvre|capfirst }}</h1>
-                <p>par <a href="{% url 'artiste' oeuvre.auteurOeuvre %}">{{ oeuvre.auteurOeuvre|capfirst }}</a></p>
+                <p>par <a class="link-auteur" href="{% url 'artiste' oeuvre.auteurOeuvre %}">{{ oeuvre.auteurOeuvre|capfirst }}</a></p>
             </div>
             <div class="detailOeuvre--content">
                 <p id="dimension">{{ oeuvre.slug|capfirst }}, {{ oeuvre.dimensionOeuvre }} cm </p>
@@ -37,7 +37,7 @@
             {% for oeuvre in oeuvresAuteur %}
                 <a href="/oeuvres/{{ oeuvre.slug }}/{{ oeuvre.idOeuvre }}/">
                     <div class="oeuvre-plus">
-                        <img class="imgOeuvrePlus" src="/media/{{ oeuvre.imageOeuvre }}" alt="{{ oeuvre.nomOeuvre }}">
+                        <img class="imgOeuvrePlus" src="{{ oeuvre.imageOeuvre.url }}" alt="{{ oeuvre.nomOeuvre }}">
                         <p class="plus-content">
                             <span>{{ oeuvre.nomOeuvre|capfirst }}</span>
                             <span>{{ oeuvre.prixOeuvre }}€</span>
