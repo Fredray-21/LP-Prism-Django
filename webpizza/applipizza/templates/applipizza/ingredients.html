@@ -12,12 +12,14 @@
         <ul>
             {% for i in ingredients %}
                 <li class="li-pizzas">{{ i.nomIngredient|capfirst }}
-                    <a class="link-details" href="/ingredients/{{ i.idIngredient }}/update/">
-                        <img src="{% static 'applipizza/img/pen-solid.svg' %}" alt="logo_pen">
-                    </a>
-                    <a class="link-details" href="/ingredients/{{ i.idIngredient }}/delete/">
-                        <img src="{% static 'applipizza/img/trash-solid.svg' %}" alt="logo_pen">
-                    </a>
+                    {% if user.is_authenticated %}
+                        <a class="link-details" href="/ingredients/{{ i.idIngredient }}/update/">
+                            <img src="{% static 'applipizza/img/pen-solid.svg' %}" alt="logo_pen">
+                        </a>
+                        <a class="link-details" href="/ingredients/{{ i.idIngredient }}/delete/">
+                            <img src="{% static 'applipizza/img/trash-solid.svg' %}" alt="logo_pen">
+                        </a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
