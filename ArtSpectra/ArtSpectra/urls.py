@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from appliArtSpectra import views
 from django.conf.urls.static import static
-from accounts.views import signup, logout_user,login_user, profil, artiste
+from accounts.views import signup, logout_user,login_user, profil, artiste, artistes
 from ArtSpectra import settings
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('oeuvres/<str:slug>/', views.typeOeuvre, name='typeOeuvre'),
     path('profil/', profil, name='profil'),
     path('artistes/<str:username>/', artiste, name='artiste'),
+    path('artistes/', artistes, name='artistes'),
 
 
 

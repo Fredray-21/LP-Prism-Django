@@ -1,0 +1,35 @@
+{% extends 'appliArtSpectra/base.html' %}
+
+{% block title %}
+    Artistes - ArtSpectra
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div id="container-artistes">
+        <h1>Les Artistes</h1>
+
+        <div class="container-content-artistes">
+            {% for artiste in artistes %}
+                <div class="card-artiste">
+                    <img class="oeuvre-image" src="{{ artiste.first_oeuvre.imageOeuvre.url }}" alt="avatar">
+
+                    <div class="card-artiste-infos">
+                        <img class="user-avatar" src="
+
+
+                                {% if artiste.artiste_obj.avatar != '' %}{{ artiste.artiste_obj.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}"
+                             alt="avatar">
+                        <div class="card-artiste-infos-text">
+                            <h2>{{ artiste.artiste_obj.username }}</h2>
+                            <p>{{ artiste.artiste_obj.first_name }} {{ artiste.artiste_obj.last_name }}</p>
+                            <p>{{ artiste.artiste_obj.email }}</p>
+                            <p>{{ artiste.artiste_obj.date_joined }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

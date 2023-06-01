@@ -21,8 +21,8 @@
         <ul>
             <li><a class="{% if request.resolver_match.url_name == 'accueil' %}--active{% endif %}"
                    href="{% url 'accueil' %}">Accueil</a></li>
-            <li><a class="{% if request.resolver_match.url_name == 'artiste' %}--active{% endif %}"
-                   href="#">Artistes</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'artistes' %}--active{% endif %}"
+                   href="{% url 'artistes' %}">Artistes</a></li>
             <li><a class="{% if request.resolver_match.url_name == 'oeuvres' %}--active{% endif %}"
                    href="{% url 'oeuvres' %}">Oeuvres</a></li>
             <li><a class="{% if request.resolver_match.url_name == 'expositions' %}--active{% endif %}" href="#">Expositions</a>

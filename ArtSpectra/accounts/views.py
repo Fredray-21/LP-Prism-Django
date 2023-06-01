@@ -68,3 +68,18 @@ def artiste(request, username):
         return redirect('accueil')
 
     return render(request, 'accounts/artiste.html', {'user': user, 'oeuvreDeArtiste': oeuvreDeArtiste})
+
+def artistes(request):
+    artistes = Shopper.objects.all()
+    dictArtiste = []
+    for artiste in artistes:
+        dictArtiste.append({
+            'artiste_obj': artiste,
+            'nb_oeuvres': Oeuvre.objects.filter(auteurOeuvre=artiste).count(),
+            'first_oeuvre': Oeuvre.objects.filter(auteurOeuvre=artiste).last(),
+        }),
+
+    print(dictArtiste)
+
+
+    return render(request, 'accounts/artistes.html', {'artistes': dictArtiste})
