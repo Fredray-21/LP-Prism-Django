@@ -574,6 +574,7 @@ div.formSL form input {
 #container-artistes .container-content-artistes {
     display         : flex;
     justify-content : space-evenly;
+    flex-wrap       : wrap;
     align-items     : center;
     width           : 100%;
     height          : 100%;
@@ -581,20 +582,27 @@ div.formSL form input {
     padding         : 0;
     box-sizing      : border-box;
 }
+#container-artistes .container-content-artistes a {
+    text-decoration : none;
+    color           : black;
+}
 
 #container-artistes .card-artiste img.oeuvre-image {
-    width      : 20rem;
+    width      : 100%;
     height     : 20rem;
     box-sizing : border-box;
     margin     : 0;
     padding    : 0;
     object-fit : cover;
 }
+#container-artistes .card-artiste {
+    max-width: 20rem;
+}
 
 
 #container-artistes .card-artiste .card-artiste-infos {
     display         : flex;
-    justify-content : center;
+    justify-content : space-between;
     align-items     : center;
     gap             : 2rem;
     width           : 100%;
@@ -604,9 +612,13 @@ div.formSL form input {
     box-sizing      : border-box;
 }
 
+#container-artistes .card-artiste .card-artiste-infos * {
+    margin : 0;
+}
+
 #container-artistes .card-artiste .card-artiste-infos img.user-avatar {
-    width         : 10rem;
-    height        : 10rem;
+    width         : 5rem;
+    height        : 5rem;
     box-sizing    : border-box;
     margin        : 0;
     padding       : 0;
