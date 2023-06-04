@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from accounts.models import Shopper
 from appliArtSpectra.models import Oeuvre
+from django.db.models import Count
 
 # Create your views here.
 def signup(request):
@@ -56,7 +57,8 @@ def profil(request):
             return redirect('profil')
     else:
         form_profil = UserUpdateForm(instance=request.user)
-    return render(request, 'accounts/profil.html', {'form_profil': form_profil})
+        oeuvres = Oeuvre.objects.filter(auteurOeuvre=request.user)
+    return render(request, 'accounts/profil.html', {'form_profil': form_profil, 'oeuvres': oeuvres})
 
 
 def artiste(request, username):
@@ -70,7 +72,7 @@ def artiste(request, username):
     return render(request, 'accounts/artiste.html', {'user': user, 'oeuvreDeArtiste': oeuvreDeArtiste})
 
 def artistes(request):
-    artistes = Shopper.objects.all()
+    artistes = Shopper.objects.annotate(nb_oeuvres=Count('oeuvre')).filter(nb_oeuvres__gt=0)
     dictArtiste = []
     for artiste in artistes:
         dictArtiste.append({
@@ -78,7 +80,6 @@ def artistes(request):
             'nb_oeuvres': Oeuvre.objects.filter(auteurOeuvre=artiste).count(),
             'first_oeuvre': Oeuvre.objects.filter(auteurOeuvre=artiste).last(),
         }),
-
     print(dictArtiste)
 
 

@@ -33,7 +33,7 @@
     </nav>
     <div id="container-connexion">
         {% if user.is_authenticated %}
-            <a href="{% url 'profil' %}" class="btn btn-primary">
+            <a href="{% url 'profil' %}">
                 <div class="row-name">
                     <p>{{ user.username }}</p>
                     <img class="user-avatar" src="{% if user.avatar != '' %}{{ user.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}" alt="avatar">

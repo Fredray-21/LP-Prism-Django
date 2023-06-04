@@ -6,44 +6,76 @@
 
 {% block content %}
     {% load static %}
-    <div id="form_profil" class="formSL">
-        <h1>Votre profil</h1>
+    <section id="container_profil">
+        <div id="form_profil" class="formSL">
+            <h1>Votre profil</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {% for field in form_profil %}
+                        {% if field == form_profil.presentation %}
+                            <tr class="input-presentation">
+                                {% elif field == form_profil.avatar and form_profil.avatar.value %}
+                            <tr class="input-avatar">
+                                <td>
+                                    {% if field.value %}
+                                        <img class="imgAvatar" src="{{ field.value.url }}" alt="Avatar">
+                                    {% endif %}
+                                </td>
+                                <td>{{ field }}</td>
+                                {% else %}
+                            <tr>
+                        {% endif %}
 
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-                {% for field in form_profil %}
-                    {% if field == form_profil.presentation %}
-                        <tr class="input-presentation">
-                            {% elif field == form_profil.avatar and form_profil.avatar.value %}
-                        <tr class="input-avatar">
-                            <td>
-                                {% if field.value %}
-                                    <img class="imgAvatar" src="{{ field.value.url }}" alt="Avatar">
-                                {% endif %}
-                            </td>
-                            <td>{{ field }}</td>
-                            {% else %}
-                        <tr>
+                    {% if field != form_profil.avatar or not form_profil.avatar.value %}
+                        <td>{{ field.label_tag }}</td>
+                        <td>{{ field }}</td>
                     {% endif %}
 
-                {% if field != form_profil.avatar or not form_profil.avatar.value %}
-                    <td>{{ field.label_tag }}</td>
-                    <td>{{ field }}</td>
-                {% endif %}
-
-                </tr>
-                    {% for error in field.errors %}
-                        <tr>
-                            <td></td>
-                            <td class="alert alert-danger">{{ error }}</td>
-                        </tr>
+                    </tr>
+                        {% for error in field.errors %}
+                            <tr>
+                                <td></td>
+                                <td class="alert alert-danger">{{ error }}</td>
+                            </tr>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
-            </table>
+                </table>
+                <input type="submit" value="Enregistrer les modifications">
+            </form>
+        </div>
 
-            <input type="submit" value="Enregistrer les modifications">
-        </form>
-    </div>
-
+        {% if oeuvres|length > 0 %}
+            <div id="container_profil">
+                <div class="row-title">
+                    <h1>Vos Oeuvres</h1>
+                    <a class="btn" href="{% url 'ajouterOeuvre' %}">Ajouter une oeuvre</a>
+                </div>
+                <div id="container_profil--oeuvre">
+                    {% for oeuvre in oeuvres %}
+                        <div class="oeuvre">
+                            <img src="{{ oeuvre.imageOeuvre.url }}" alt="Oeuvre">
+                            <div class="container-actions">
+                                <h2>{{ oeuvre.nomOeuvre|capfirst }}</h2>
+                                <div class="actions">
+                                    <a class="btn"
+                                       href="{% url 'oeuvre' slug=oeuvre.slug idOeuvre=oeuvre.idOeuvre %}">
+                                        Voir l'oeuvre
+                                    </a>
+                                    <a class="btn"
+                                       href="{% url 'modifierOeuvre' idOeuvre=oeuvre.idOeuvre %}">
+                                        Modifier l'oeuvre
+                                    </a>
+                                    <a class="btn"
+                                       href="{% url 'supprimerOeuvre' idOeuvre=oeuvre.idOeuvre %}">
+                                        Supprimer l'oeuvre
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </section>
 {% endblock %}

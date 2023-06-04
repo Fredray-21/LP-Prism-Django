@@ -38,3 +38,13 @@ def typeOeuvre(request, slug):
     else:
         return redirect('oeuvres')
 
+
+
+def supprimerOeuvre(request, idOeuvre):
+    oeuvre = get_object_or_404(Oeuvre, idOeuvre=idOeuvre)
+    oeuvre.delete()
+    return redirect('profil')
+
+def modifierOeuvre(request, idOeuvre):
+    oeuvre = get_object_or_404(Oeuvre, idOeuvre=idOeuvre)
+    return render(request, 'appliArtSpectra/modifierOeuvre.html', {'oeuvre': oeuvre})
