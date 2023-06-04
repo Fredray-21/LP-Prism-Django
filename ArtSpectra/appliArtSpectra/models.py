@@ -22,7 +22,7 @@ class Oeuvre(models.Model):
 
     prixOeuvre = models.IntegerField(verbose_name="Prix de l'oeuvre")
 
-    slug = models.SlugField(max_length=100, verbose_name="Slug de l'oeuvre", unique=False)
+    slug = models.SlugField(max_length=100, verbose_name="Slug de l'oeuvre", unique=False, editable=True)
 
     # auteurOeuvre est une clé étrangère vers le modèle Shopper
     auteurOeuvre = models.ForeignKey(Shopper, on_delete=models.CASCADE, verbose_name="Auteur de l'oeuvre")
@@ -32,3 +32,5 @@ class Oeuvre(models.Model):
     # une methode de type "toString" pour afficher l'objet
     def __str__(self):
         return 'oeuvre ' + self.nomOeuvre
+
+

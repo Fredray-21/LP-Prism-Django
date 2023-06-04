@@ -2,6 +2,8 @@ from django.shortcuts import render
 from appliArtSpectra.models import Oeuvre
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
+from appliArtSpectra.forms import OeuvreUpdateForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -45,6 +47,17 @@ def supprimerOeuvre(request, idOeuvre):
     oeuvre.delete()
     return redirect('profil')
 
+
 def modifierOeuvre(request, idOeuvre):
     oeuvre = get_object_or_404(Oeuvre, idOeuvre=idOeuvre)
-    return render(request, 'appliArtSpectra/modifierOeuvre.html', {'oeuvre': oeuvre})
+    if request.method == 'POST':
+        form_oeuvre = OeuvreUpdateForm(request.POST, request.FILES, instance=oeuvre)
+        if form_oeuvre.is_valid():
+            form_oeuvre.save()
+            messages.success(request, f'Votre oeuvre a bien été modifiée !')
+            return redirect('profil')
+    else:
+        form_oeuvre = OeuvreUpdateForm(instance=oeuvre)
+        oeuvres = Oeuvre.objects.filter(auteurOeuvre=request.user)
+    return render(request, 'appliArtSpectra/modifierOeuvre.html', {'form_oeuvre': form_oeuvre, 'oeuvres': oeuvres})
+

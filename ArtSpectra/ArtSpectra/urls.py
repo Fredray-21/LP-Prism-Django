@@ -31,16 +31,15 @@ urlpatterns = [
     path('artistes/<str:username>/', artiste, name='artiste'),
     path('artistes/', artistes, name='artistes'),
 
+
     path('oeuvre/<int:idOeuvre>/modifier/', views.modifierOeuvre, name='modifierOeuvre'),
     path('oeuvre/<int:idOeuvre>/supprimer/', views.supprimerOeuvre, name='supprimerOeuvre'),
     path('ajouterOeuvre/', views.supprimerOeuvre, name='ajouterOeuvre'),
 
 
-
     path('signup/', signup, name='signup'),
     path('logout/', logout_user, name='logout'),
     path('login/', login_user, name='login'),
-
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

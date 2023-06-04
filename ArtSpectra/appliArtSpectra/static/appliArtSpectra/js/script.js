@@ -7,8 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const linkAvatar = document.querySelector("tr.input-avatar > td > a");
     if (linkAvatar) {
         linkAvatar.insertAdjacentHTML("afterend", "</br>");
-        console.log("linkAvatar");
         linkAvatar.setAttribute("target", "_blank");
     }
+
+    // remove du label et du checkbox pour supprimer l'image de l'oeuvre
+    const checkboxDelOeuvre = document.querySelector("#imageOeuvre-clear_id");
+    const LabelcheckboxDelOeuvre = document.querySelector(`label[for="imageOeuvre-clear_id"]`);
+
+    //checkboxDelOeuvre && checkboxDelOeuvre.remove();
+    //LabelcheckboxDelOeuvre && LabelcheckboxDelOeuvre.remove();
 });
 
