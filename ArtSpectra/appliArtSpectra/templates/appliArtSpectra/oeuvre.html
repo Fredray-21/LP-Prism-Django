@@ -26,7 +26,11 @@
                         <b>{{ oeuvre.quantiteOeuvre }}</b>
                     {% endif %}
                 </p>
-                <a id="addPanier" href="{% url 'ajouter_au_panier' oeuvre.idOeuvre %}"><span>Acheter cette œuvre</span> - <span>{{ oeuvre.prixOeuvre }}€</span></a>
+                {% if oeuvre.quantiteOeuvre > 0 %}
+                    <a id="addPanier" href="{% url 'ajouter_au_panier' oeuvre.idOeuvre %}"><span>Acheter cette œuvre</span> - <span>{{ oeuvre.prixOeuvre }}€</span></a>
+                {% else %}
+                    <span id="addPanier">Oeuvre non disponible à la vente</span>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -23,7 +23,10 @@
                     <td>{{ panieroeuvre.oeuvre.nomOeuvre }}</td>
                     <td>{{ panieroeuvre.quantite }}</td>
                     <td>{{ panieroeuvre.oeuvre.prixOeuvre }}€</td>
-                    <td><a href="{% url 'supprimer_du_panier' panieroeuvre.id %}">Supprimer</a></td>
+                    <td>
+                        <a href="{% url 'supprimer_du_panier' panieroeuvre.id %}">Supprimer</a>
+                        <a href="{% url 'oeuvre' panieroeuvre.oeuvre.slug panieroeuvre.oeuvre.idOeuvre %}">Voir</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

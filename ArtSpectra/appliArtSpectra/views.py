@@ -106,16 +106,21 @@ def ajouter_au_panier(request, oeuvre_id):
     # Get the selected artwork
     oeuvre = Oeuvre.objects.get(idOeuvre=oeuvre_id)
 
-    # Get the current user's cart
-    panier, created = Panier.objects.get_or_create(utilisateur=request.user)
+    # Check if the artwork is available
+    if oeuvre.quantiteOeuvre > 0:
+        # Get the current user's cart
+        panier, created = Panier.objects.get_or_create(utilisateur=request.user)
 
-    # Add the artwork to the cart
-    panier_oeuvre, created = PanierOeuvre.objects.get_or_create(panier=panier, oeuvre=oeuvre)
-    panier_oeuvre.quantite += 1
-    panier_oeuvre.save()
+        # Add the artwork to the cart
+        panier_oeuvre, created = PanierOeuvre.objects.get_or_create(panier=panier, oeuvre=oeuvre)
+        panier_oeuvre.quantite += 1
+        panier_oeuvre.save()
+
+        # Decrease the available quantity of the artwork
+        oeuvre.quantiteOeuvre -= 1
+        oeuvre.save()
 
     return redirect('panier')
-
 
 
 @login_required
@@ -123,8 +128,17 @@ def supprimer_du_panier(request, panieroeuvre_id):
     # Get the PanierOeuvre object to delete
     panieroeuvre = PanierOeuvre.objects.get(id=panieroeuvre_id)
 
-    # Delete the PanierOeuvre object
-    panieroeuvre.delete()
+    # Decrease the quantity in the cart by 1
+    panieroeuvre.quantite -= 1
+    panieroeuvre.save()
+
+    oeuvre = panieroeuvre.oeuvre
+    oeuvre.quantiteOeuvre += 1
+    oeuvre.save()
+
+    if panieroeuvre.quantite == 0:
+        panieroeuvre.delete()
 
     return redirect('panier')
+
 

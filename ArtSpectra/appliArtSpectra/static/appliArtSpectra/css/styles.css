@@ -305,7 +305,7 @@ header #container-connexion .row-name img.user-avatar {
 }
 
 
-#container-detail-oeuvre div.containerInfoDetailOeuvre .detailOeuvre--content a#addPanier {
+#container-detail-oeuvre div.containerInfoDetailOeuvre .detailOeuvre--content #addPanier {
     display          : flex;
     justify-content  : space-around;
     align-items      : center;
