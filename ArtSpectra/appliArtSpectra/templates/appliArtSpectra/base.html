@@ -25,8 +25,11 @@
                    href="{% url 'artistes' %}">Artistes</a></li>
             <li><a class="{% if request.resolver_match.url_name == 'oeuvres' %}--active{% endif %}"
                    href="{% url 'oeuvres' %}">Oeuvres</a></li>
-            <li><a class="{% if request.resolver_match.url_name == 'panier' %}--active{% endif %}" href="{% url 'panier' %}">Panier</a>
-            </li>
+            {% if user.is_authenticated %}
+                <li><a class="{% if request.resolver_match.url_name == 'panier' %}--active{% endif %}"
+                       href="{% url 'panier' %}">Panier</a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
     <div id="container-connexion">
@@ -34,7 +37,9 @@
             <a href="{% url 'profil' %}">
                 <div class="row-name">
                     <p>{{ user.username }}</p>
-                    <img class="user-avatar" src="{% if user.avatar != '' %}{{ user.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}" alt="avatar">
+                    <img class="user-avatar" src="
+                            {% if user.avatar != '' %}{{ user.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}"
+                         alt="avatar">
                 </div>
             </a>
 
