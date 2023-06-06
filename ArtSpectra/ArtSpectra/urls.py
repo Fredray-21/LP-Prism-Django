@@ -34,12 +34,16 @@ urlpatterns = [
 
     path('oeuvre/<int:idOeuvre>/modifier/', views.modifierOeuvre, name='modifierOeuvre'),
     path('oeuvre/<int:idOeuvre>/supprimer/', views.supprimerOeuvre, name='supprimerOeuvre'),
-    path('ajouterOeuvre/', views.supprimerOeuvre, name='ajouterOeuvre'),
+    path('ajouterOeuvre/', views.ajouterOeuvre, name='ajouterOeuvre'),
 
 
     path('signup/', signup, name='signup'),
     path('logout/', logout_user, name='logout'),
     path('login/', login_user, name='login'),
+
+    path('panier/', views.panier, name='panier'),
+    path('ajouter-au-panier/<int:oeuvre_id>/', views.ajouter_au_panier, name='ajouter_au_panier'),
+    path('supprimer-du-panier/<int:panieroeuvre_id>/', views.supprimer_du_panier, name='supprimer_du_panier'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

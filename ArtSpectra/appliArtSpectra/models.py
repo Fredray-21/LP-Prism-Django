@@ -34,3 +34,20 @@ class Oeuvre(models.Model):
         return 'oeuvre ' + self.nomOeuvre
 
 
+
+class Panier(models.Model):
+    utilisateur = models.ForeignKey(Shopper, on_delete=models.CASCADE)
+    oeuvre = models.ManyToManyField(Oeuvre, through='PanierOeuvre')
+
+    def __str__(self):
+        return f"Panier de {self.utilisateur.username}"
+
+
+class PanierOeuvre(models.Model):
+    panier = models.ForeignKey(Panier, on_delete=models.CASCADE)
+    oeuvre = models.ForeignKey(Oeuvre, on_delete=models.CASCADE)
+    quantite = models.IntegerField(default=0)
+    # Additional fields specific to the relationship between Panier and Oeuvre
+
+    class Meta:
+        db_table = 'panier_oeuvre'  # Optional: Define a custom database table name

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxDelOeuvre = document.querySelector("#imageOeuvre-clear_id");
     const LabelcheckboxDelOeuvre = document.querySelector(`label[for="imageOeuvre-clear_id"]`);
 
-    //checkboxDelOeuvre && checkboxDelOeuvre.remove();
-    //LabelcheckboxDelOeuvre && LabelcheckboxDelOeuvre.remove();
+    checkboxDelOeuvre && checkboxDelOeuvre.remove();
+    LabelcheckboxDelOeuvre && LabelcheckboxDelOeuvre.remove();
 });
 

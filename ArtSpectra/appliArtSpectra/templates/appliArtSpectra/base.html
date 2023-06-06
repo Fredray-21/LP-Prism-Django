@@ -25,9 +25,7 @@
                    href="{% url 'artistes' %}">Artistes</a></li>
             <li><a class="{% if request.resolver_match.url_name == 'oeuvres' %}--active{% endif %}"
                    href="{% url 'oeuvres' %}">Oeuvres</a></li>
-            <li><a class="{% if request.resolver_match.url_name == 'expositions' %}--active{% endif %}" href="#">Expositions</a>
-            </li>
-            <li><a class="{% if request.resolver_match.url_name == 'contact' %}--active{% endif %}" href="#">Contact</a>
+            <li><a class="{% if request.resolver_match.url_name == 'panier' %}--active{% endif %}" href="{% url 'panier' %}">Panier</a>
             </li>
         </ul>
     </nav>

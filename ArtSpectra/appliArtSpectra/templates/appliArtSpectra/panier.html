@@ -1,0 +1,41 @@
+{% extends 'appliArtSpectra/base.html' %}
+
+{% block title %}
+    Panier - ArtSpectra
+{% endblock %}
+
+{% block content %}
+    <h1>Votre panier</h1>
+
+    {% if panier.oeuvre.all %}
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Quantité</th>
+                <th>Prix unitaire</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for panieroeuvre in panieroeuvres %}
+                <tr>
+                    <td>{{ panieroeuvre.oeuvre.nomOeuvre }}</td>
+                    <td>{{ panieroeuvre.quantite }}</td>
+                    <td>{{ panieroeuvre.oeuvre.prixOeuvre }}€</td>
+                    <td><a href="{% url 'supprimer_du_panier' panieroeuvre.id %}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td><b>Total :</b></td>
+                <td><b>{{ total }}€</b></td>
+            </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p>Votre panier est vide.</p>
+    {% endif %}
+{% endblock %}

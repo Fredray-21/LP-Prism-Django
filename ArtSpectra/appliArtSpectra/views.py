@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from appliArtSpectra.models import Oeuvre
+from appliArtSpectra.models import Oeuvre, Panier, PanierOeuvre
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from appliArtSpectra.forms import OeuvreUpdateForm
+from appliArtSpectra.forms import OeuvreUpdateForm, OeuvreCreateForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -60,4 +62,69 @@ def modifierOeuvre(request, idOeuvre):
         form_oeuvre = OeuvreUpdateForm(instance=oeuvre)
         oeuvres = Oeuvre.objects.filter(auteurOeuvre=request.user)
     return render(request, 'appliArtSpectra/modifierOeuvre.html', {'form_oeuvre': form_oeuvre, 'oeuvres': oeuvres})
+
+
+@login_required
+def ajouterOeuvre(request):
+    if request.method == 'POST':
+        form_oeuvre = OeuvreCreateForm(request.POST, request.FILES)
+        if form_oeuvre.is_valid():
+            oeuvre = form_oeuvre.save(commit=False)
+            oeuvre.auteurOeuvre = request.user  # Assigner l'utilisateur actuel à auteurOeuvre
+            oeuvre.save()
+            messages.success(request, "Votre oeuvre a bien été ajoutée !")
+            return redirect('profil')
+    else:
+        form_oeuvre = OeuvreCreateForm()
+        oeuvres = Oeuvre.objects.filter(auteurOeuvre=request.user)
+    return render(request, 'appliArtSpectra/ajouterOeuvre.html', {'form_oeuvre': form_oeuvre, 'oeuvres': oeuvres})
+
+
+
+@login_required
+def panier(request):
+    # Get the current user's cart or create a new one if it doesn't exist
+    panier, created = Panier.objects.get_or_create(utilisateur=request.user)
+
+    # Get the artwork in the cart along with their quantities
+    panieroeuvres = PanierOeuvre.objects.filter(panier=panier).select_related('oeuvre')
+
+    # Calculate the total price of the items in the cart
+    total = sum(panieroeuvre.oeuvre.prixOeuvre * panieroeuvre.quantite for panieroeuvre in panieroeuvres)
+
+    context = {
+        'panier': panier,
+        'panieroeuvres': panieroeuvres,
+        'total': total
+    }
+
+    return render(request, 'appliArtSpectra/panier.html', context)
+
+
+@login_required
+def ajouter_au_panier(request, oeuvre_id):
+    # Get the selected artwork
+    oeuvre = Oeuvre.objects.get(idOeuvre=oeuvre_id)
+
+    # Get the current user's cart
+    panier, created = Panier.objects.get_or_create(utilisateur=request.user)
+
+    # Add the artwork to the cart
+    panier_oeuvre, created = PanierOeuvre.objects.get_or_create(panier=panier, oeuvre=oeuvre)
+    panier_oeuvre.quantite += 1
+    panier_oeuvre.save()
+
+    return redirect('panier')
+
+
+
+@login_required
+def supprimer_du_panier(request, panieroeuvre_id):
+    # Get the PanierOeuvre object to delete
+    panieroeuvre = PanierOeuvre.objects.get(id=panieroeuvre_id)
+
+    # Delete the PanierOeuvre object
+    panieroeuvre.delete()
+
+    return redirect('panier')
 

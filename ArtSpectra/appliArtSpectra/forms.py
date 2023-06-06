@@ -19,3 +19,18 @@ class OeuvreUpdateForm(forms.ModelForm):
         slug_choices = Oeuvre.objects.exclude(slug=current_slug).values_list('slug', 'slug').distinct()
         choices = [(current_slug, current_slug)] + list(slug_choices)
         return choices
+
+
+class OeuvreCreateForm(forms.ModelForm):
+    class Meta:
+        model = Oeuvre
+        fields = ['nomOeuvre', 'dateCreationOeuvre', 'descriptionOeuvre', 'dimensionOeuvre', 'imageOeuvre', 'prixOeuvre', 'quantiteOeuvre', 'slug']
+
+    def __init__(self, *args, **kwargs):
+        super(OeuvreCreateForm, self).__init__(*args, **kwargs)
+        self.fields['slug'] = forms.ChoiceField(choices=self.get_slug_choices())
+
+    def get_slug_choices(self):
+        slug_choices = Oeuvre.objects.values_list('slug', 'slug').distinct()
+        return slug_choices
+
