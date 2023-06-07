@@ -32,9 +32,14 @@ python -m venv env
 ```
 
 ## Activer l'environnement virtuel
-
+### Windows
 ``` bash
 env\Scripts\activate
+```
+
+### Linux
+``` bash
+source env/bin/activate
 ```
 
 ## Installer les dépendances
