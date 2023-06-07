@@ -11,6 +11,58 @@ Ce dépôt peut être utilisé comme référence pour les projets futurs ou pour
 Si vous avez des questions sur l'utilisation de ce dépôt, n'hésitez pas à me contacter.
 
 
+# Comment installer le projet
+Pour installer le projet, il faut suivre les étapes suivantes :
+## Cloner le projet
+
+``` bash
+git clone https://github.com/Fredray-21/LP-Prism-Django.git
+```
+
+## Créer un environnement virtuel
+
+``` bash
+python -m venv env
+```
+
+## Activer l'environnement virtuel
+
+``` bash
+env\Scripts\activate
+```
+
+## Installer les dépendances
+
+``` bash
+pip install -r requirements.txt
+```
+
+## Créer la base de données
+
+``` bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## Créer un super utilisateur
+
+``` bash
+python manage.py createsuperuser
+```
+
+## Lancer le serveur
+
+``` bash
+python manage.py runserver
+```
+
+# Notes sur le projet
+Il est à noter que aucune jeu de données n'est fourni avec le projet.
+Il faut donc créer un super utilisateur et ajouter des données manuellement.
+
+### Pour ArtSpectra : des images d'illustration sont fournies dans le dossier media.
+
+<hr/>
 
 # Idée pour le projet final
 * Création d'une nouvelle œuvre d'art : Permettez aux artistes de créer un profil et d'ajouter de nouvelles œuvres d'art à la galerie. Ils pourront fournir des informations telles que le titre, la description, les dimensions et télécharger une image représentative de l'œuvre.
