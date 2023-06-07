@@ -63,13 +63,13 @@ def profil(request):
 
 def artiste(request, username):
     try :
-        user = Shopper.objects.get(username=username)
-        oeuvreDeArtiste = Oeuvre.objects.filter(auteurOeuvre=user)
+        artiste = Shopper.objects.get(username=username)
+        oeuvreDeArtiste = Oeuvre.objects.filter(auteurOeuvre=artiste)
     except :
         messages.error(request, f'Ce profil n\'existe pas')
         return redirect('accueil')
 
-    return render(request, 'accounts/artiste.html', {'user': user, 'oeuvreDeArtiste': oeuvreDeArtiste})
+    return render(request, 'accounts/artiste.html', {'artiste': artiste, 'oeuvreDeArtiste': oeuvreDeArtiste})
 
 def artistes(request):
     artistes = Shopper.objects.annotate(nb_oeuvres=Count('oeuvre')).filter(nb_oeuvres__gt=0)

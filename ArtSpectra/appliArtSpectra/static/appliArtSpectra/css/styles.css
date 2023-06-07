@@ -429,6 +429,14 @@ div.formSL form {
     color            : white;
 }
 
+div.formSL form .forgot {
+    justify-content: flex-start;
+}
+div.formSL form .forgot a {
+    color: white;
+}
+
+
 div.formSL form input[type="submit"] {
     width            : 100%;
     height           : 3rem;
@@ -696,3 +704,7 @@ div#container_profil--oeuvre .oeuvre .container-actions .actions {
     gap             : 1rem;
 }
 
+
+div#forget_password {
+
+}

@@ -11,21 +11,21 @@
             <div id="container-profil">
                 <div id="profil-artiste-img">
                     <img src="
-                            {% if user.avatar != '' %}{{ user.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}"
+                            {% if artiste.avatar != '' %}{{ artiste.avatar.url }}{% else %}{% static 'appliArtSpectra/img/avatar.png' %}{% endif %}"
                          alt="avatar">
                 </div>
                 <div id="profil-artiste-info">
-                    <h2>{{ user.username|capfirst }}</h2>
-                    <p>{{ user.first_name }} {{ user.last_name }}</p>
-                    <p>{{ user.email }}</p>
-                    {% if user.presentation != '' %}
+                    <h2>{{ artiste.username|capfirst }}</h2>
+                    <p>{{ artiste.first_name }} {{ user.last_name }}</p>
+                    <p>{{ artiste.email }}</p>
+                    {% if artiste.presentation != '' %}
                         <h3>Présentation :</h3>
-                        <p>{{ user.presentation }}</p>
+                        <p>{{ artiste.presentation }}</p>
                     {% endif %}
                 </div>
             </div>
             <div id="profil-artiste-oeuvres">
-                <h1>Les oeuvres de {{ user.username|capfirst }}</h1>
+                <h1>Les oeuvres de {{ artiste.username|capfirst }}</h1>
                 <div class="container-oeuvres-artiste">
                     {% for oeuvre in oeuvreDeArtiste %}
                         <a href="/oeuvres/{{ oeuvre.slug }}/{{ oeuvre.idOeuvre }}/">

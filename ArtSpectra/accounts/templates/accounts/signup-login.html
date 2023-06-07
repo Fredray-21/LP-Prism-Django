@@ -47,10 +47,21 @@
                             </tr>
                         {% endfor %}
                     {% endfor %}
+                    <tr></tr>
+                    <tr class="forgot">
+                        <td>Pas encore Inscrit ?</td>
+                        <td><a href="{% url 'signup' %}"> S'inscrire </a></td>
+                    </tr>
+                    <tr class="forgot">
+                        <td>Mot de passe oublié ?</td>
+                        <td><a href="{% url 'password_reset' %}"> Renouveler mon mot de passe </a></td>
+                    </tr>
+
                 </table>
                 <input type="submit" value="Se connecter">
             </form>
         </div>
+
     {% endif %}
 
     {% if error %}
