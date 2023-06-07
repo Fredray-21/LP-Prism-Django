@@ -13,7 +13,7 @@ Si vous avez des questions sur l'utilisation de ce dépôt, n'hésitez pas à me
 
 
 # Idée pour le projet final
-* Création d'une nouvelle œuvre d'art : Permettez aux artistes de créer un profil et d'ajouter de nouvelles œuvres d'art à la galerie. Ils pourront fournir des informations telles que le titre, la description, le médium, les dimensions, l'année de création et télécharger une image représentative de l'œuvre.
+* Création d'une nouvelle œuvre d'art : Permettez aux artistes de créer un profil et d'ajouter de nouvelles œuvres d'art à la galerie. Ils pourront fournir des informations telles que le titre, la description, les dimensions et télécharger une image représentative de l'œuvre.
 
 
 * Consultation des œuvres d'art : Affichez une liste d'œuvres d'art dans la galerie, permettant aux utilisateurs de parcourir et de voir les détails de chaque œuvre. Ils pourront visualiser l'image, lire la description et les informations supplémentaires.
@@ -29,15 +29,3 @@ Si vous avez des questions sur l'utilisation de ce dépôt, n'hésitez pas à me
 * Gestion des artistes : Permettez aux administrateurs de la galerie de gérer les profils des artistes. Ils pourront ajouter de nouveaux artistes, mettre à jour leurs informations, suspendre ou supprimer des profils si nécessaire.
 
 * Ajout de catégories ou de tags : Mettez en place un système de catégorisation ou de balisage des œuvres d'art. Cela permettra aux utilisateurs de filtrer les œuvres par catégorie ou par tag spécifique, facilitant ainsi la recherche et la découverte d'œuvres.
-
-* Système de commentaires : Intégrez un système de commentaires permettant aux utilisateurs de la galerie de laisser des commentaires sur les œuvres d'art. Ils pourront partager leurs opinions, poser des questions aux artistes ou engager des discussions.
-
-## En ce qui concerne la base de données (BDD), vous pouvez envisager de stocker les informations suivantes :
-
-
-Table "Artists" : pour stocker les détails des artistes tels que leur nom, leur biographie, leur photo de profil, etc.
-Table "Artworks" : pour stocker les informations spécifiques à chaque œuvre d'art, telles que le titre, la description, les informations techniques, l'image, etc. Cette table peut être liée à la table "Artists" par une clé étrangère pour identifier l'artiste responsable de chaque œuvre.
-Table "Categories" : pour stocker les différentes catégories d'œuvres d'art.
-Table "Tags" : pour stocker les tags ou mots-clés associés à chaque œuvre d'art.
-Table "Comments" : pour stocker les commentaires des utilisateurs, en les associant à l'œuvre d'art correspondante.
-Assurez-vous de concevoir une structure de base de données adaptée à vos besoins et d'optimiser les requêtes pour garantir des performances optimales pour votre application de galerie d'art.
