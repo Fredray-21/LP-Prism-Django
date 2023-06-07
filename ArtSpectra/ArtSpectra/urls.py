@@ -20,6 +20,7 @@ from appliArtSpectra import views
 from django.conf.urls.static import static
 from accounts.views import signup, logout_user,login_user, profil, artiste, artistes
 from ArtSpectra import settings
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,6 +45,25 @@ urlpatterns = [
     path('panier/', views.panier, name='panier'),
     path('ajouter-au-panier/<int:oeuvre_id>/', views.ajouter_au_panier, name='ajouter_au_panier'),
     path('supprimer-du-panier/<int:panieroeuvre_id>/', views.supprimer_du_panier, name='supprimer_du_panier'),
+
+
+    path('password_reset/',
+         auth_views.PasswordResetView.as_view(
+             template_name='accounts/password_reset.html',
+             email_template_name='accounts/password_reset_email.html'),
+         name='password_reset'),
+    path('reset/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='accounts/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('password_reset/done/',
+         auth_views.PasswordResetDoneView.as_view(
+             template_name='accounts/password_reset_done.html'),
+         name='password_reset_done'),
+    path('reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='accounts/password_reset_complete.html'),
+         name='password_reset_complete'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
