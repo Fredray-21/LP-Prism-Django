@@ -48,7 +48,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Créer la base de données
+## Si besoin : Créer la base de données
 
 ``` bash
 python manage.py makemigrations
